@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5hhxwqiwfq4"]
+[gd_scene load_steps=17 format=3 uid="uid://c5hhxwqiwfq4"]
 
 [ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="1_b20jg"]
 [ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_brlrh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bi83jv7m7fthy" path="res://Assets/ui/shoot_bar.png" id="11_io28c"]
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_io28c"]
 [ext_resource type="Texture2D" uid="uid://bar733ipw34bt" path="res://Assets/ui/empty.png" id="13_h0kdk"]
+[ext_resource type="AudioStream" uid="uid://d26hu7njtbrr0" path="res://music/Beats 1.mp3" id="16_h0kdk"]
 
 [node name="main" type="Node2D"]
 
@@ -142,6 +143,10 @@ position = Vector2(666, 280)
 [node name="boss" parent="." instance=ExtResource("4_wcurd")]
 position = Vector2(1022, 65)
 scale = Vector2(2.91, 2.91)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_h0kdk")
+autoplay = true
 
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/player" method="_on_esc_pressed"]
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/UI" method="_on_esc_pressed"]

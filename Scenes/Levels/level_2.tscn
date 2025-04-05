@@ -13,15 +13,11 @@
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="11_jip10"]
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_1xj2d"]
 [ext_resource type="Texture2D" uid="uid://3b2w1mfmpp24" path="res://Assets/ui/pause.png" id="13_7h8th"]
-[ext_resource type="PackedScene" uid="uid://dltqmyosod48a" path="res://Scenes/UI/pause_ui.tscn" id="14_m4i1e"]
 [ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="15_ixm8h"]
-[ext_resource type="PackedScene" uid="uid://c4cgp7patmlbq" path="res://Scenes/Entity/boss_3.tscn" id="16_yxf76"]
+[ext_resource type="PackedScene" uid="uid://odw6ikm7iayk" path="res://Scenes/Entity/boss_2.tscn" id="15_t27xo"]
+[ext_resource type="AudioStream" uid="uid://bf826ykwbdefh" path="res://music/Beats 2.mp3" id="16_yxf76"]
 
 [node name="level_2" type="Node2D"]
-
-[node name="boss_3" parent="." instance=ExtResource("16_yxf76")]
-position = Vector2(1049, 59)
-scale = Vector2(2.9, 2.9)
 
 [node name="level" parent="." instance=ExtResource("1_7qxk6")]
 position = Vector2(16, 15)
@@ -113,40 +109,6 @@ offset_bottom = 140.0
 scale = Vector2(4.01, 4.01)
 texture_normal = ExtResource("13_7h8th")
 
-[node name="pause_ui" parent="UI/esc" instance=ExtResource("14_m4i1e")]
-offset_left = -230.175
-offset_top = -96.01
-offset_right = -230.175
-offset_bottom = -96.01
-
-[node name="contiue" parent="UI/esc/pause_ui" index="0"]
-offset_left = 218.204
-offset_top = 115.711
-offset_right = 256.204
-offset_bottom = 131.711
-scale = Vector2(1, 1)
-
-[node name="continue_text" parent="UI/esc/pause_ui" index="1"]
-offset_left = 222.943
-offset_top = 112.968
-offset_right = 364.943
-offset_bottom = 152.968
-scale = Vector2(0.5, 0.5)
-
-[node name="exit" parent="UI/esc/pause_ui" index="2"]
-offset_left = 222.943
-offset_top = 135.91
-offset_right = 262.943
-offset_bottom = 151.91
-scale = Vector2(0.8, 1)
-
-[node name="exit_text" parent="UI/esc/pause_ui" index="3"]
-offset_left = 224.688
-offset_top = 131.92
-offset_right = 366.688
-offset_bottom = 171.92
-scale = Vector2(0.5, 0.5)
-
 [node name="Marker2D" type="Marker2D" parent="UI/esc"]
 position = Vector2(6.2344, 29.4264)
 
@@ -165,6 +127,12 @@ position = Vector2(567, 280)
 unique_name_in_owner = true
 position = Vector2(667, 280)
 
-[connection signal="pressed" from="UI/esc" to="UI" method="_on_texture_button_pressed"]
+[node name="boss_2" parent="." instance=ExtResource("15_t27xo")]
+position = Vector2(1026, 53)
+scale = Vector2(2.5, 2.5)
 
-[editable path="UI/esc/pause_ui"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_yxf76")
+autoplay = true
+
+[connection signal="pressed" from="UI/esc" to="UI" method="_on_texture_button_pressed"]

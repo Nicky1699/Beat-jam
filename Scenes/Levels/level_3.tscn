@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnfjnl5bdjje0"]
+[gd_scene load_steps=18 format=3 uid="uid://bnfjnl5bdjje0"]
 
 [ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_8dmpc"]
 [ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="2_anjjd"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dltqmyosod48a" path="res://Scenes/UI/pause_ui.tscn" id="14_gupo0"]
 [ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="15_3l8qv"]
 [ext_resource type="PackedScene" uid="uid://c4cgp7patmlbq" path="res://Scenes/Entity/boss_3.tscn" id="16_teul3"]
+[ext_resource type="AudioStream" uid="uid://b5hqxofvj7tq3" path="res://music/Beats 3.mp3" id="17_anjjd"]
 
 [node name="level_3" type="Node2D"]
 
@@ -30,6 +31,9 @@ scale = Vector2(0.6, 0.6)
 
 [node name="music spawner" parent="." instance=ExtResource("3_ocbj8")]
 position = Vector2(-16, -15)
+
+[node name="Camera2D" type="Camera2D" parent="music spawner"]
+position = Vector2(592, 349)
 
 [node name="UI" type="Control" parent="." groups=["UI"]]
 layout_mode = 3
@@ -110,10 +114,6 @@ scale = Vector2(4.01, 4.01)
 texture_normal = ExtResource("13_wvd0d")
 
 [node name="pause_ui" parent="UI/esc" instance=ExtResource("14_gupo0")]
-offset_left = -230.175
-offset_top = -96.01
-offset_right = -230.175
-offset_bottom = -96.01
 
 [node name="contiue" parent="UI/esc/pause_ui" index="0"]
 offset_left = 218.204
@@ -164,6 +164,14 @@ position = Vector2(667, 280)
 [node name="boss_3" parent="." instance=ExtResource("16_teul3")]
 position = Vector2(1077, 57)
 scale = Vector2(2.5, 2.5)
+
+[node name="Beats3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_anjjd")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_anjjd")
+autoplay = true
 
 [connection signal="pressed" from="UI/esc" to="UI" method="_on_texture_button_pressed"]
 
