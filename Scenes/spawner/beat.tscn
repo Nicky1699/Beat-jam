@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://brlvu3aqtn8xg"]
+
+[ext_resource type="Script" uid="uid://cttoplnjijk8f" path="res://clicks.gd" id="1_lmnod"]
+[ext_resource type="Texture2D" uid="uid://dx775s7e5p520" path="res://Assets/beats/beat.png" id="2_utxwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n48g0"]
+size = Vector2(52, 50)
+
+[node name="beat" type="CharacterBody2D" groups=["beat"]]
+script = ExtResource("1_lmnod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_n48g0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_utxwq")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

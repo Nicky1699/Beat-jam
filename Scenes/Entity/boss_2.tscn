@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://odw6ikm7iayk"]
+
+[ext_resource type="Script" uid="uid://tlwrtnreof5b" path="res://Scenes/Entity/boss_2.gd" id="1_m13dl"]
+[ext_resource type="Texture2D" uid="uid://rbma4k0p1lmc" path="res://Assets/boss/boss_2.png" id="2_jntso"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66ydo"]
+
+[node name="boss_2" type="CharacterBody2D" groups=["boss"]]
+script = ExtResource("1_m13dl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jntso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_66ydo")
+
+[node name="down" type="RayCast2D" parent="."]
+scale = Vector2(4.11, 0.85)
+target_position = Vector2(0, 20)
+
+[node name="up" type="RayCast2D" parent="."]
+rotation = 3.14159
+scale = Vector2(4.11, 0.85)
+target_position = Vector2(0, 20)
+
+[node name="phase__2" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="fire_rate" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="phase__2" to="." method="_on_phase__2_timeout"]
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]

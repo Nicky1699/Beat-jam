@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx71m8ql3hqfy"]
+
+[ext_resource type="Script" uid="uid://bv8u4d327rwly" path="res://Scenes/Enemy/boss_1.gd" id="1_3npve"]
+[ext_resource type="Texture2D" uid="uid://b21eruaxcq4h1" path="res://icon.svg" id="1_k80fm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k80fm"]
+size = Vector2(136, 134)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3npve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k80fm")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(1, 0.121569, 0.121569, 1)
+texture = ExtResource("1_k80fm")
+
+[node name="up" type="RayCast2D" parent="."]
+rotation = 3.14159
+scale = Vector2(25.35, 1.515)
+collide_with_bodies = false
+
+[node name="down" type="RayCast2D" parent="."]
+scale = Vector2(25, 1.525)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

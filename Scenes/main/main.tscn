@@ -1,0 +1,147 @@
+[gd_scene load_steps=16 format=3 uid="uid://c5hhxwqiwfq4"]
+
+[ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="1_b20jg"]
+[ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_brlrh"]
+[ext_resource type="PackedScene" uid="uid://wtjni4xuikn" path="res://Scenes/spawner/music_spawner.tscn" id="2_w1fgp"]
+[ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="3_4etoo"]
+[ext_resource type="PackedScene" uid="uid://cwnojh07a14sy" path="res://Scenes/Entity/boss.tscn" id="4_wcurd"]
+[ext_resource type="Texture2D" uid="uid://b6sumniionvmf" path="res://Assets/ui/health_bar.png" id="6_4jhlv"]
+[ext_resource type="Script" uid="uid://dip2t2xbd6qul" path="res://Scenes/main/control.gd" id="6_hgq70"]
+[ext_resource type="Texture2D" uid="uid://dv4xvcdfyya0w" path="res://Assets/ui/Sprite-0022bar.png" id="7_8lqer"]
+[ext_resource type="Texture2D" uid="uid://befkvdvcqk4y6" path="res://Assets/player/player_w.png" id="9_8lqer"]
+[ext_resource type="Texture2D" uid="uid://bq84tcawl88uk" path="res://Assets/ui/empty_shoot_bar.png" id="10_7y5iv"]
+[ext_resource type="Texture2D" uid="uid://bdaw3sog5vunj" path="res://Assets/boss/emogi_boss1.png" id="10_h0kdk"]
+[ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="11_ebke8"]
+[ext_resource type="Texture2D" uid="uid://bi83jv7m7fthy" path="res://Assets/ui/shoot_bar.png" id="11_io28c"]
+[ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_io28c"]
+[ext_resource type="Texture2D" uid="uid://bar733ipw34bt" path="res://Assets/ui/empty.png" id="13_h0kdk"]
+
+[node name="main" type="Node2D"]
+
+[node name="level_1" parent="." instance=ExtResource("1_brlrh")]
+position = Vector2(16, 15)
+
+[node name="player" parent="level_1" instance=ExtResource("1_b20jg")]
+position = Vector2(44, 25)
+scale = Vector2(0.6, 0.6)
+
+[node name="Marker2D2" type="Marker2D" parent="level_1/player"]
+unique_name_in_owner = true
+
+[node name="music spawner" parent="level_1" instance=ExtResource("2_w1fgp")]
+position = Vector2(-16, -15)
+
+[node name="UI" type="Control" parent="level_1" groups=["UI"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 240.0
+offset_right = 285.0
+offset_bottom = 632.0
+script = ExtResource("6_hgq70")
+
+[node name="player_health" type="TextureProgressBar" parent="level_1/UI"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 76.0
+value = 100.0
+texture_under = ExtResource("6_4jhlv")
+texture_progress = ExtResource("7_8lqer")
+
+[node name="player_emote" type="Sprite2D" parent="level_1/UI"]
+position = Vector2(20, 60)
+texture = ExtResource("9_8lqer")
+flip_h = true
+
+[node name="shoot_bar" type="TextureProgressBar" parent="level_1/UI"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 101.0
+offset_right = 280.0
+offset_bottom = 117.0
+texture_under = ExtResource("10_7y5iv")
+texture_progress = ExtResource("11_io28c")
+
+[node name="boss_health" type="TextureProgressBar" parent="level_1/UI"]
+layout_mode = 0
+offset_left = 801.98
+offset_top = 60.0
+offset_right = 1041.98
+offset_bottom = 76.0
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("6_4jhlv")
+texture_progress = ExtResource("7_8lqer")
+
+[node name="boss_emot_1" type="Sprite2D" parent="level_1/UI"]
+position = Vector2(1081.19, 61.19)
+scale = Vector2(2.4, 2.464)
+texture = ExtResource("10_h0kdk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="level_1/UI"]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 16.0
+offset_right = 1014.0
+offset_bottom = 43.0
+scale = Vector2(1.63, 1.63)
+theme_override_fonts/normal_font = ExtResource("11_ebke8")
+bbcode_enabled = true
+text = "
+[wave amp=30 freq=2]Mr _Someone
+
+"
+scroll_active = false
+
+[node name="timer_tunnner" parent="level_1/UI" instance=ExtResource("12_io28c")]
+position = Vector2(50, 199)
+scale = Vector2(0.69, 0.69)
+
+[node name="esc" type="TextureButton" parent="level_1/UI"]
+process_mode = 3
+layout_mode = 0
+offset_left = 850.0
+offset_top = 213.0
+offset_right = 888.0
+offset_bottom = 229.0
+scale = Vector2(4.01, 4.01)
+button_mask = 7
+texture_normal = ExtResource("13_h0kdk")
+ignore_texture_size = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="level_1/UI"]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 159.0
+offset_right = 959.0
+offset_bottom = 209.0
+scale = Vector2(2, 2)
+theme_override_fonts/normal_font = ExtResource("11_ebke8")
+bbcode_enabled = true
+text = "
+[wave amp=30 freq=1]pause"
+scroll_active = false
+
+[node name="notes" parent="." instance=ExtResource("3_4etoo")]
+position = Vector2(466, 600)
+
+[node name="up2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(466, 280)
+
+[node name="down2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(566, 280)
+
+[node name="left2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(666, 280)
+
+[node name="boss" parent="." instance=ExtResource("4_wcurd")]
+position = Vector2(1022, 65)
+scale = Vector2(2.91, 2.91)
+
+[connection signal="pressed" from="level_1/UI/esc" to="level_1/player" method="_on_esc_pressed"]
+[connection signal="pressed" from="level_1/UI/esc" to="level_1/UI" method="_on_esc_pressed"]

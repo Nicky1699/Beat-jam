@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rtfuowcitca0"]
+
+[ext_resource type="Script" uid="uid://dqb013h70b8nr" path="res://Scenes/Entity/timer_tunnner.gd" id="1_45cmq"]
+[ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="2_dejyv"]
+
+[node name="timer_tunnner" type="Node2D"]
+script = ExtResource("1_45cmq")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 14.0
+offset_bottom = 15.0
+scale = Vector2(5.6, 5.6)
+theme_override_fonts/font = ExtResource("2_dejyv")
+text = "demo"

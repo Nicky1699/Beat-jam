@@ -1,0 +1,170 @@
+[gd_scene load_steps=17 format=3 uid="uid://bnfjnl5bdjje0"]
+
+[ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_8dmpc"]
+[ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="2_anjjd"]
+[ext_resource type="PackedScene" uid="uid://wtjni4xuikn" path="res://Scenes/spawner/music_spawner.tscn" id="3_ocbj8"]
+[ext_resource type="Script" uid="uid://dip2t2xbd6qul" path="res://Scenes/main/control.gd" id="4_r8neg"]
+[ext_resource type="Texture2D" uid="uid://b6sumniionvmf" path="res://Assets/ui/health_bar.png" id="5_rcyh2"]
+[ext_resource type="Texture2D" uid="uid://dv4xvcdfyya0w" path="res://Assets/ui/Sprite-0022bar.png" id="6_341pv"]
+[ext_resource type="Texture2D" uid="uid://befkvdvcqk4y6" path="res://Assets/player/player_w.png" id="7_wnlxl"]
+[ext_resource type="Texture2D" uid="uid://bq84tcawl88uk" path="res://Assets/ui/empty_shoot_bar.png" id="8_jgaqf"]
+[ext_resource type="Texture2D" uid="uid://bi83jv7m7fthy" path="res://Assets/ui/shoot_bar.png" id="9_x66yp"]
+[ext_resource type="Texture2D" uid="uid://cjh61uaotgubi" path="res://Assets/boss/boss_2_emot.png" id="10_8ve8p"]
+[ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="11_3m4x7"]
+[ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_q2kiq"]
+[ext_resource type="Texture2D" uid="uid://3b2w1mfmpp24" path="res://Assets/ui/pause.png" id="13_wvd0d"]
+[ext_resource type="PackedScene" uid="uid://dltqmyosod48a" path="res://Scenes/UI/pause_ui.tscn" id="14_gupo0"]
+[ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="15_3l8qv"]
+[ext_resource type="PackedScene" uid="uid://c4cgp7patmlbq" path="res://Scenes/Entity/boss_3.tscn" id="16_teul3"]
+
+[node name="level_3" type="Node2D"]
+
+[node name="level" parent="." instance=ExtResource("1_8dmpc")]
+position = Vector2(16, 15)
+
+[node name="player" parent="." instance=ExtResource("2_anjjd")]
+position = Vector2(48, 44)
+scale = Vector2(0.6, 0.6)
+
+[node name="Marker2D2" type="Marker2D" parent="player"]
+
+[node name="music spawner" parent="." instance=ExtResource("3_ocbj8")]
+position = Vector2(-16, -15)
+
+[node name="UI" type="Control" parent="." groups=["UI"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 240.0
+offset_right = 285.0
+offset_bottom = 632.0
+script = ExtResource("4_r8neg")
+
+[node name="player_health" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 76.0
+value = 100.0
+texture_under = ExtResource("5_rcyh2")
+texture_progress = ExtResource("6_341pv")
+
+[node name="player_emote" type="Sprite2D" parent="UI"]
+position = Vector2(20, 60)
+texture = ExtResource("7_wnlxl")
+flip_h = true
+
+[node name="shoot_bar" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 101.0
+offset_right = 280.0
+offset_bottom = 117.0
+texture_under = ExtResource("8_jgaqf")
+texture_progress = ExtResource("9_x66yp")
+
+[node name="boss_health" type="TextureProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 801.98
+offset_top = 60.0
+offset_right = 1041.98
+offset_bottom = 76.0
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("5_rcyh2")
+texture_progress = ExtResource("6_341pv")
+
+[node name="boss_emot_1" type="Sprite2D" parent="UI"]
+position = Vector2(1068, 65)
+scale = Vector2(2.4, 2.464)
+texture = ExtResource("10_8ve8p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 16.0
+offset_right = 1014.0
+offset_bottom = 43.0
+scale = Vector2(1.63, 1.63)
+theme_override_fonts/normal_font = ExtResource("11_3m4x7")
+bbcode_enabled = true
+text = "
+[wave amp=30 freq=2]Mr _Someone
+
+"
+scroll_active = false
+
+[node name="timer_tunnner" parent="UI" instance=ExtResource("12_q2kiq")]
+position = Vector2(50, 199)
+scale = Vector2(0.69, 0.69)
+
+[node name="esc" type="TextureButton" parent="UI"]
+process_mode = 3
+layout_mode = 0
+offset_left = 919.0
+offset_top = 124.0
+offset_right = 935.0
+offset_bottom = 140.0
+scale = Vector2(4.01, 4.01)
+texture_normal = ExtResource("13_wvd0d")
+
+[node name="pause_ui" parent="UI/esc" instance=ExtResource("14_gupo0")]
+offset_left = -230.175
+offset_top = -96.01
+offset_right = -230.175
+offset_bottom = -96.01
+
+[node name="contiue" parent="UI/esc/pause_ui" index="0"]
+offset_left = 218.204
+offset_top = 115.711
+offset_right = 256.204
+offset_bottom = 131.711
+scale = Vector2(1, 1)
+
+[node name="continue_text" parent="UI/esc/pause_ui" index="1"]
+offset_left = 222.943
+offset_top = 112.968
+offset_right = 364.943
+offset_bottom = 152.968
+scale = Vector2(0.5, 0.5)
+
+[node name="exit" parent="UI/esc/pause_ui" index="2"]
+offset_left = 222.943
+offset_top = 135.91
+offset_right = 262.943
+offset_bottom = 151.91
+scale = Vector2(0.8, 1)
+
+[node name="exit_text" parent="UI/esc/pause_ui" index="3"]
+offset_left = 224.688
+offset_top = 131.92
+offset_right = 366.688
+offset_bottom = 171.92
+scale = Vector2(0.5, 0.5)
+
+[node name="Marker2D" type="Marker2D" parent="UI/esc"]
+position = Vector2(6.2344, 29.4264)
+
+[node name="notes" parent="." instance=ExtResource("15_3l8qv")]
+position = Vector2(466, 600)
+
+[node name="up2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(467, 280)
+
+[node name="down2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(567, 280)
+
+[node name="left2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(667, 280)
+
+[node name="boss_3" parent="." instance=ExtResource("16_teul3")]
+position = Vector2(1077, 57)
+scale = Vector2(2.5, 2.5)
+
+[connection signal="pressed" from="UI/esc" to="UI" method="_on_texture_button_pressed"]
+
+[editable path="UI/esc/pause_ui"]

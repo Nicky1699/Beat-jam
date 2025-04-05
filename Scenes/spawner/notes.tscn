@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d23nmq4pe64c1"]
+
+[ext_resource type="Script" uid="uid://d05lac642ufmr" path="res://Scenes/spawner/notes.gd" id="1_0nlhn"]
+[ext_resource type="Texture2D" uid="uid://xoe3nfk264wl" path="res://Assets/ui/a.png" id="2_1tepe"]
+[ext_resource type="Texture2D" uid="uid://srgvsy04kdpa" path="res://Assets/ui/s.png" id="3_la3i8"]
+[ext_resource type="Texture2D" uid="uid://b8dia5levphoo" path="res://Assets/ui/d.png" id="4_2vc3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sj6c"]
+size = Vector2(72, 123)
+
+[node name="notes" type="Node2D"]
+script = ExtResource("1_0nlhn")
+
+[node name="a" type="Area2D" parent="." groups=["note"]]
+
+[node name="a" type="CollisionShape2D" parent="a"]
+shape = SubResource("RectangleShape2D_7sj6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="a/a"]
+position = Vector2(-1, -36)
+scale = Vector2(3, 3)
+texture = ExtResource("2_1tepe")
+
+[node name="s" type="Area2D" parent="." groups=["note"]]
+position = Vector2(100, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="s"]
+position = Vector2(-1, -36)
+scale = Vector2(3, 3)
+texture = ExtResource("3_la3i8")
+
+[node name="s" type="CollisionShape2D" parent="s"]
+shape = SubResource("RectangleShape2D_7sj6c")
+
+[node name="d" type="Area2D" parent="." groups=["note"]]
+position = Vector2(200, 0)
+
+[node name="d" type="CollisionShape2D" parent="d"]
+shape = SubResource("RectangleShape2D_7sj6c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="d"]
+position = Vector2(-1, -36)
+scale = Vector2(3, 3)
+texture = ExtResource("4_2vc3j")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="a" to="." method="_on_a_body_entered"]
+[connection signal="body_entered" from="a" to="." method="_on_area_2d_4_body_entered"]
+[connection signal="body_entered" from="s" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="s" to="." method="_on_s_body_entered"]
+[connection signal="body_entered" from="d" to="." method="_on_d_body_entered"]
+[connection signal="body_entered" from="d" to="." method="_on_area_2d_3_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

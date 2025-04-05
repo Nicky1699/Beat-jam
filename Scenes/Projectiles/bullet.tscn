@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://q6pjymvglg01"]
+
+[ext_resource type="Script" uid="uid://chaxp76nryly2" path="res://bullet.gd" id="1_3323x"]
+[ext_resource type="Texture2D" uid="uid://d5f6ohqygq0v" path="res://Assets/player/player_bullet.png" id="2_t1vox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_te8f1"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_3323x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_te8f1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 5.25)
+texture = ExtResource("2_t1vox")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

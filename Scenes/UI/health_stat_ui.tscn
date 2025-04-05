@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpf37pxyscm62"]
+
+[ext_resource type="Script" uid="uid://byxik3w2s3ou4" path="res://Scenes/UI/health_stat_ui.gd" id="1_jxuca"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jxuca"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5hccc"]
+
+[node name="stat_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxuca")
+
+[node name="1" type="Area2D" parent="."]
+position = Vector2(16, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1"]
+shape = SubResource("CircleShape2D_jxuca")
+
+[node name="Sprite2D" type="Sprite2D" parent="1"]
+texture = SubResource("CompressedTexture2D_5hccc")
+
+[node name="2" type="Area2D" parent="."]
+position = Vector2(57.955, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2"]
+shape = SubResource("CircleShape2D_jxuca")
+
+[node name="Sprite2D" type="Sprite2D" parent="2"]
+texture = SubResource("CompressedTexture2D_5hccc")
+
+[node name="3" type="Area2D" parent="."]
+position = Vector2(36.255, 51.175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3"]
+shape = SubResource("CircleShape2D_jxuca")
+
+[node name="Sprite2D" type="Sprite2D" parent="3"]
+texture = SubResource("CompressedTexture2D_5hccc")

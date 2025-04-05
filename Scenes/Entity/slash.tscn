@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxgicnxm3lf66"]
+
+[ext_resource type="Texture2D" uid="uid://54s2vb523dwn" path="res://Assets/boss/boss_3_Slash.png" id="1_bvsqd"]
+[ext_resource type="Script" uid="uid://bl8brahmsuokk" path="res://Scenes/Entity/slash.gd" id="1_mujkc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bvsqd"]
+height = 102.0
+
+[node name="slash" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_mujkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bvsqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(28, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("1_bvsqd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
