@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://bkp13r3nn3rnt"]
+[gd_scene load_steps=13 format=4 uid="uid://bkp13r3nn3rnt"]
 
 [ext_resource type="Texture2D" uid="uid://dnxl3rh4hkoc5" path="res://Assets/tilset/tiles.png" id="1_7d313"]
 [ext_resource type="Script" uid="uid://d0t3t2sgcvk5r" path="res://Scenes/UI/win_ui.gd" id="1_27bjr"]
-[ext_resource type="FontFile" uid="uid://cxax6wvkkrfff" path="res://Assets/ui/{PixelFlag}.ttf" id="2_v1xht"]
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="3_00voj"]
 [ext_resource type="Texture2D" uid="uid://befkvdvcqk4y6" path="res://Assets/player/player_w.png" id="4_27bjr"]
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="5_isw6g"]
+[ext_resource type="AudioStream" uid="uid://c8bh7bkfagyt6" path="res://music/Win.mp3" id="6_27bjr"]
+[ext_resource type="Texture2D" uid="uid://b7e1xr3vi08gh" path="res://Assets/ui/menu.png" id="7_isw6g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1xht"]
 texture = ExtResource("1_7d313")
@@ -29,6 +30,43 @@ texture = ExtResource("1_7d313")
 [sub_resource type="TileSet" id="TileSet_yv8g5"]
 sources/0 = SubResource("TileSetAtlasSource_v1xht")
 
+[sub_resource type="Animation" id="Animation_isw6g"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.52, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(333, 374), Vector2(333, 380.95), Vector2(333, 358.471)]
+}
+
+[sub_resource type="Animation" id="Animation_qcorn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(333, 374)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lh70u"]
+_data = {
+&"RESET": SubResource("Animation_qcorn"),
+&"idle": SubResource("Animation_isw6g")
+}
+
 [node name="win_ui" type="Node2D"]
 script = ExtResource("1_27bjr")
 
@@ -37,37 +75,73 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAI
 tile_set = SubResource("TileSet_yv8g5")
 
 [node name="win" type="RichTextLabel" parent="."]
-offset_left = 347.0
-offset_top = 93.0
-offset_right = 547.0
-offset_bottom = 166.0
-scale = Vector2(5, 5)
-theme_override_fonts/normal_font = ExtResource("2_v1xht")
-bbcode_enabled = true
-text = "
-[wave amp=30 freq=2] congratulations "
-
-[node name="runner" type="RichTextLabel" parent="."]
-offset_left = 305.0
-offset_top = 365.0
-offset_right = 412.0
-offset_bottom = 381.0
+offset_left = 355.0
+offset_top = 138.0
+offset_right = 555.0
+offset_bottom = 211.0
 scale = Vector2(5, 5)
 theme_override_fonts/normal_font = ExtResource("3_00voj")
 bbcode_enabled = true
-text = "Time  : "
+text = "[shake rate=5 level=10]
+You nailed it!
+[/shake] 
+"
+
+[node name="congo" type="RichTextLabel" parent="."]
+offset_left = 294.0
+offset_top = -83.0
+offset_right = 494.0
+offset_bottom = -10.0
+scale = Vector2(5, 5)
+theme_override_fonts/normal_font = ExtResource("3_00voj")
+bbcode_enabled = true
+text = "[shake rate=5 level=10]
+[shake rate=5 level=10]
+
+Congratulations[/shake] 
+[/shake] 
+"
+
+[node name="runner" type="RichTextLabel" parent="."]
+offset_left = 390.0
+offset_top = 355.0
+offset_right = 497.0
+offset_bottom = 371.0
+scale = Vector2(5, 5)
+theme_override_fonts/normal_font = ExtResource("3_00voj")
+bbcode_enabled = true
+text = "Time :"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_lh70u")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(253, 384)
+position = Vector2(333, 374)
 scale = Vector2(3, 3)
 texture = ExtResource("4_27bjr")
 flip_h = true
 
 [node name="timer_tunnner" parent="." instance=ExtResource("5_isw6g")]
-position = Vector2(554, 364)
+position = Vector2(629, 352)
 
 [node name="Timer" type="Timer" parent="timer_tunnner"]
 wait_time = 0.1
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(75, -12)
+stream = ExtResource("6_27bjr")
+autoplay = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 481.0
+offset_top = 454.0
+offset_right = 536.0
+offset_bottom = 494.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_isw6g")
 
 [connection signal="timeout" from="timer_tunnner/Timer" to="timer_tunnner" method="_on_timer_timeout"]
