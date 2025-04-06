@@ -36,6 +36,7 @@ boss=""
 UI=""
 health=""
 slash=""
+camera=""
 
 [input]
 

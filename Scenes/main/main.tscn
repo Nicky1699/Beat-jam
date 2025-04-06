@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c5hhxwqiwfq4"]
+[gd_scene load_steps=19 format=3 uid="uid://c5hhxwqiwfq4"]
 
 [ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="1_b20jg"]
 [ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_brlrh"]
@@ -17,11 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://3b2w1mfmpp24" path="res://Assets/ui/pause.png" id="13_h0kdk"]
 [ext_resource type="Texture2D" uid="uid://bkg6hnfno4p3j" path="res://Assets/ui/play.png" id="14_ebke8"]
 [ext_resource type="AudioStream" uid="uid://d26hu7njtbrr0" path="res://music/Beats 1.mp3" id="16_h0kdk"]
+[ext_resource type="Script" uid="uid://b0opl8i3tqsf" path="res://Scenes/main/camera_2d.gd" id="18_ki64f"]
 
 [node name="main" type="Node2D"]
 
 [node name="level_1" parent="." instance=ExtResource("1_brlrh")]
-position = Vector2(16, 15)
+position = Vector2(2, 1)
 
 [node name="player" parent="level_1" instance=ExtResource("1_b20jg")]
 position = Vector2(44, 25)
@@ -146,9 +147,13 @@ scale = Vector2(2.91, 2.91)
 stream = ExtResource("16_h0kdk")
 autoplay = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(573, 330)
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+position = Vector2(560, 309)
+script = ExtResource("18_ki64f")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
 
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/player" method="_on_esc_pressed"]
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/UI" method="_on_esc_pressed"]
 [connection signal="pressed" from="level_1/UI/play" to="level_1/UI" method="_on_play_pressed"]
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]

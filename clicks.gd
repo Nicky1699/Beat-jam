@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var beat  =get_tree().get_first_node_in_group("note")
 @onready var ui = get_tree().get_first_node_in_group("UI")
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 var in_box_a = false
@@ -35,5 +36,6 @@ func  _physics_process(delta: float) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	audio_stream_player_2d.playing  = true
 	ui.shoot_bar -=20
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjkmsqalkuxbt"]
+[gd_scene load_steps=19 format=3 uid="uid://cjkmsqalkuxbt"]
 
 [ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="2_ucdhh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="15_ixm8h"]
 [ext_resource type="PackedScene" uid="uid://odw6ikm7iayk" path="res://Scenes/Entity/boss_2.tscn" id="15_t27xo"]
 [ext_resource type="AudioStream" uid="uid://bf826ykwbdefh" path="res://music/Beats 2.mp3" id="16_yxf76"]
+[ext_resource type="Script" uid="uid://b0opl8i3tqsf" path="res://Scenes/main/camera_2d.gd" id="18_5buja"]
 
 [node name="level_2" type="Node2D"]
 
@@ -55,15 +56,12 @@ scale = Vector2(2.5, 2.5)
 stream = ExtResource("16_yxf76")
 autoplay = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(578, 333)
-
 [node name="UI" type="Control" parent="." groups=["UI"]]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.0
+offset_left = 13.0
 offset_top = 240.0
-offset_right = 285.0
+offset_right = 300.0
 offset_bottom = 632.0
 script = ExtResource("4_yxf76")
 
@@ -148,5 +146,12 @@ offset_bottom = 291.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("14_ia1lp")
 
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+position = Vector2(577, 324)
+script = ExtResource("18_5buja")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
 [connection signal="pressed" from="UI/esc" to="UI" method="_on_esc_pressed"]
 [connection signal="pressed" from="UI/play" to="UI" method="_on_play_pressed"]
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
