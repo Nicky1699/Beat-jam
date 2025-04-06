@@ -5,10 +5,12 @@ var time = Global.s_time
 
 @onready var boss_2 = preload("res://Scenes/Entity/boss_2.tscn")
 
+var can_run  =true
 
 func _physics_process(delta):
-	time = float(time) +delta
-	update_ui()
+	if can_run == true:
+		time = float(time) +delta
+		update_ui()
 	
 func update_ui():
 	# Format time with two decimal places
@@ -21,3 +23,7 @@ func update_ui():
 	Global.s_time= formatted_time
 		
 	$Label.text = formatted_time
+
+
+func _on_timer_timeout() -> void:
+	can_run = false

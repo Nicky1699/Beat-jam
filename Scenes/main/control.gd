@@ -18,7 +18,7 @@ var _health :float= 100:
 		_health = value
 		$player_health.value = value
 		if _health <=0:
-			print("death")
+			get_tree().change_scene_to_file("res://Scenes/UI/game_over.tscn")
 
 var shoot_bar :float= 0:
 	set(value):
