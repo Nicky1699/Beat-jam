@@ -46,6 +46,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("3_d4vcb")
 
 [node name="beat" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 217.0
 offset_top = 335.0
 offset_right = 276.0
@@ -59,6 +60,7 @@ text = "
 scroll_active = false
 
 [node name="seeker" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 191.0
 offset_top = 398.0
 offset_right = 250.0
@@ -72,6 +74,7 @@ text = "
 scroll_active = false
 
 [node name="start_button" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 693.0
 offset_top = 137.0
 offset_right = 757.0
@@ -80,6 +83,7 @@ scale = Vector2(4, 4)
 texture_normal = ExtResource("5_r6ysu")
 
 [node name="credits" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 701.0
 offset_top = 368.0
 offset_right = 765.0
@@ -88,6 +92,7 @@ scale = Vector2(4, 4)
 texture_normal = ExtResource("7_h2jqt")
 
 [node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 693.0
 offset_top = 250.0
 offset_right = 757.0
@@ -100,7 +105,7 @@ stream = ExtResource("8_h2jqt")
 autoplay = true
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="credits" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
