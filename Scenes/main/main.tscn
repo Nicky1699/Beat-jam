@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5hhxwqiwfq4"]
+[gd_scene load_steps=18 format=3 uid="uid://c5hhxwqiwfq4"]
 
 [ext_resource type="PackedScene" uid="uid://dqtr6ragx81l8" path="res://Scenes/player/player.tscn" id="1_b20jg"]
 [ext_resource type="PackedScene" uid="uid://cn8sdnujheecg" path="res://Scenes/Levels/level_!.tscn" id="1_brlrh"]
@@ -14,7 +14,8 @@
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="11_ebke8"]
 [ext_resource type="Texture2D" uid="uid://bi83jv7m7fthy" path="res://Assets/ui/shoot_bar.png" id="11_io28c"]
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_io28c"]
-[ext_resource type="Texture2D" uid="uid://bar733ipw34bt" path="res://Assets/ui/empty.png" id="13_h0kdk"]
+[ext_resource type="Texture2D" uid="uid://3b2w1mfmpp24" path="res://Assets/ui/pause.png" id="13_h0kdk"]
+[ext_resource type="Texture2D" uid="uid://bkg6hnfno4p3j" path="res://Assets/ui/play.png" id="14_ebke8"]
 [ext_resource type="AudioStream" uid="uid://d26hu7njtbrr0" path="res://music/Beats 1.mp3" id="16_h0kdk"]
 
 [node name="main" type="Node2D"]
@@ -103,27 +104,24 @@ scale = Vector2(0.69, 0.69)
 [node name="esc" type="TextureButton" parent="level_1/UI"]
 process_mode = 3
 layout_mode = 0
-offset_left = 850.0
-offset_top = 213.0
-offset_right = 888.0
-offset_bottom = 229.0
+offset_left = 838.0
+offset_top = 142.0
+offset_right = 892.0
+offset_bottom = 166.0
 scale = Vector2(4.01, 4.01)
 button_mask = 7
 texture_normal = ExtResource("13_h0kdk")
 ignore_texture_size = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="level_1/UI"]
+[node name="play" type="TextureButton" parent="level_1/UI"]
+process_mode = 3
 layout_mode = 0
-offset_left = 888.0
-offset_top = 159.0
-offset_right = 959.0
-offset_bottom = 209.0
-scale = Vector2(2, 2)
-theme_override_fonts/normal_font = ExtResource("11_ebke8")
-bbcode_enabled = true
-text = "
-[wave amp=30 freq=1]pause"
-scroll_active = false
+offset_left = 840.0
+offset_top = 251.0
+offset_right = 895.0
+offset_bottom = 291.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("14_ebke8")
 
 [node name="notes" parent="." instance=ExtResource("3_4etoo")]
 position = Vector2(466, 600)
@@ -148,5 +146,9 @@ scale = Vector2(2.91, 2.91)
 stream = ExtResource("16_h0kdk")
 autoplay = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(573, 330)
+
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/player" method="_on_esc_pressed"]
 [connection signal="pressed" from="level_1/UI/esc" to="level_1/UI" method="_on_esc_pressed"]
+[connection signal="pressed" from="level_1/UI/play" to="level_1/UI" method="_on_play_pressed"]

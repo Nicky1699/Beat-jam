@@ -32,15 +32,3 @@ func _movement(delta):
 		position -= Vector2(0,30) * 2
 		is_move= false
 	move_and_slide()
-
-
-
-
-
-func _on_timer_timeout() -> void:
-	print("up : ",can_up,"down : ",can_down)
-	
-
-
-func _on_esc_pressed() -> void:
-	pass # Replace with function body.

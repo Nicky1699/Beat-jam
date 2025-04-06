@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://befkvdvcqk4y6" path="res://Assets/player/player_w.png" id="7_wnlxl"]
 [ext_resource type="Texture2D" uid="uid://bq84tcawl88uk" path="res://Assets/ui/empty_shoot_bar.png" id="8_jgaqf"]
 [ext_resource type="Texture2D" uid="uid://bi83jv7m7fthy" path="res://Assets/ui/shoot_bar.png" id="9_x66yp"]
-[ext_resource type="Texture2D" uid="uid://cjh61uaotgubi" path="res://Assets/boss/boss_2_emot.png" id="10_8ve8p"]
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="11_3m4x7"]
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="12_q2kiq"]
+[ext_resource type="Texture2D" uid="uid://bdaw3sog5vunj" path="res://Assets/boss/emogi_boss1.png" id="13_anjjd"]
 [ext_resource type="Texture2D" uid="uid://3b2w1mfmpp24" path="res://Assets/ui/pause.png" id="13_wvd0d"]
-[ext_resource type="PackedScene" uid="uid://dltqmyosod48a" path="res://Scenes/UI/pause_ui.tscn" id="14_gupo0"]
+[ext_resource type="Texture2D" uid="uid://bkg6hnfno4p3j" path="res://Assets/ui/play.png" id="14_anjjd"]
 [ext_resource type="PackedScene" uid="uid://d23nmq4pe64c1" path="res://Scenes/spawner/notes.tscn" id="15_3l8qv"]
 [ext_resource type="PackedScene" uid="uid://c4cgp7patmlbq" path="res://Scenes/Entity/boss_3.tscn" id="16_teul3"]
 [ext_resource type="AudioStream" uid="uid://b5hqxofvj7tq3" path="res://music/Beats 3.mp3" id="17_anjjd"]
@@ -34,6 +34,36 @@ position = Vector2(-16, -15)
 
 [node name="Camera2D" type="Camera2D" parent="music spawner"]
 position = Vector2(592, 349)
+
+[node name="notes" parent="." instance=ExtResource("15_3l8qv")]
+position = Vector2(466, 600)
+
+[node name="up2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(467, 280)
+
+[node name="down2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(567, 280)
+
+[node name="left2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(667, 280)
+
+[node name="boss_3" parent="." instance=ExtResource("16_teul3")]
+position = Vector2(1077, 57)
+scale = Vector2(2.5, 2.5)
+
+[node name="Beats3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_anjjd")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_anjjd")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 322)
 
 [node name="UI" type="Control" parent="." groups=["UI"]]
 layout_mode = 3
@@ -80,9 +110,9 @@ texture_under = ExtResource("5_rcyh2")
 texture_progress = ExtResource("6_341pv")
 
 [node name="boss_emot_1" type="Sprite2D" parent="UI"]
-position = Vector2(1068, 65)
+position = Vector2(1081.19, 61.19)
 scale = Vector2(2.4, 2.464)
-texture = ExtResource("10_8ve8p")
+texture = ExtResource("13_anjjd")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI"]
 layout_mode = 0
@@ -106,73 +136,24 @@ scale = Vector2(0.69, 0.69)
 [node name="esc" type="TextureButton" parent="UI"]
 process_mode = 3
 layout_mode = 0
-offset_left = 919.0
-offset_top = 124.0
-offset_right = 935.0
-offset_bottom = 140.0
+offset_left = 838.0
+offset_top = 142.0
+offset_right = 892.0
+offset_bottom = 166.0
 scale = Vector2(4.01, 4.01)
+button_mask = 7
 texture_normal = ExtResource("13_wvd0d")
+ignore_texture_size = true
 
-[node name="pause_ui" parent="UI/esc" instance=ExtResource("14_gupo0")]
+[node name="play" type="TextureButton" parent="UI"]
+process_mode = 3
+layout_mode = 0
+offset_left = 840.0
+offset_top = 251.0
+offset_right = 895.0
+offset_bottom = 291.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("14_anjjd")
 
-[node name="contiue" parent="UI/esc/pause_ui" index="0"]
-offset_left = 218.204
-offset_top = 115.711
-offset_right = 256.204
-offset_bottom = 131.711
-scale = Vector2(1, 1)
-
-[node name="continue_text" parent="UI/esc/pause_ui" index="1"]
-offset_left = 222.943
-offset_top = 112.968
-offset_right = 364.943
-offset_bottom = 152.968
-scale = Vector2(0.5, 0.5)
-
-[node name="exit" parent="UI/esc/pause_ui" index="2"]
-offset_left = 222.943
-offset_top = 135.91
-offset_right = 262.943
-offset_bottom = 151.91
-scale = Vector2(0.8, 1)
-
-[node name="exit_text" parent="UI/esc/pause_ui" index="3"]
-offset_left = 224.688
-offset_top = 131.92
-offset_right = 366.688
-offset_bottom = 171.92
-scale = Vector2(0.5, 0.5)
-
-[node name="Marker2D" type="Marker2D" parent="UI/esc"]
-position = Vector2(6.2344, 29.4264)
-
-[node name="notes" parent="." instance=ExtResource("15_3l8qv")]
-position = Vector2(466, 600)
-
-[node name="up2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(467, 280)
-
-[node name="down2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(567, 280)
-
-[node name="left2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(667, 280)
-
-[node name="boss_3" parent="." instance=ExtResource("16_teul3")]
-position = Vector2(1077, 57)
-scale = Vector2(2.5, 2.5)
-
-[node name="Beats3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_anjjd")
-autoplay = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_anjjd")
-autoplay = true
-
-[connection signal="pressed" from="UI/esc" to="UI" method="_on_texture_button_pressed"]
-
-[editable path="UI/esc/pause_ui"]
+[connection signal="pressed" from="UI/esc" to="UI" method="_on_esc_pressed"]
+[connection signal="pressed" from="UI/play" to="UI" method="_on_play_pressed"]

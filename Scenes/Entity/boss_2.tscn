@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://odw6ikm7iayk"]
+[gd_scene load_steps=5 format=3 uid="uid://odw6ikm7iayk"]
 
 [ext_resource type="Script" uid="uid://tlwrtnreof5b" path="res://Scenes/Entity/boss_2.gd" id="1_m13dl"]
 [ext_resource type="Texture2D" uid="uid://rbma4k0p1lmc" path="res://Assets/boss/boss_2.png" id="2_jntso"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66ydo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jntso"]
+radius = 16.7631
 
 [node name="boss_2" type="CharacterBody2D" groups=["boss"]]
 script = ExtResource("1_m13dl")
@@ -32,5 +35,11 @@ autostart = true
 [node name="fire_rate" type="Timer" parent="."]
 autostart = true
 
+[node name="player_hit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hit"]
+shape = SubResource("CircleShape2D_jntso")
+
 [connection signal="timeout" from="phase__2" to="." method="_on_phase__2_timeout"]
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="body_entered" from="player_hit" to="." method="_on_player_hit_body_entered"]

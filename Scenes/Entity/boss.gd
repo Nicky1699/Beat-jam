@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 
 
+var boss_health :float= 100:
+	set(value):
+		boss_health = value
+		$"../level_1/UI/boss_health".value = value
+		if boss_health <=0:
+			get_tree().change_scene_to_file("res://Scenes/Levels/level_2.tscn" )
 
 
 

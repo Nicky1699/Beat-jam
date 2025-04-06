@@ -3,10 +3,19 @@ extends CharacterBody2D
 
 @onready var bullet_node = preload("res://Scenes/Projectiles/boss_bullet.tscn")
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var ui  = get_tree().get_first_node_in_group("UI")
+
+
 
 @onready var down: RayCast2D = $down
 @onready var up: RayCast2D = $up
 
+var boss_health :float= 100:
+	set(value):
+		boss_health = value
+		$"../UI/boss_health".value = value
+		if boss_health <=0:
+			get_tree().change_scene_to_file("res://Scenes/Levels/level_3.tscn" )
 
 
 var can_up : bool =  true
@@ -23,12 +32,12 @@ func _physics_process(delta: float) -> void:
 	if not_front == false:
 		_movement(delta)
 	elif not_front == true:
-		move_front()
+		move_front(delta)
 	
 	
-func move_front():
-	var direction  = (player.position - position).normalized()	
-	position += Vector2(-1,0)
+func move_front(delta):
+	velocity = (player.position - position).normalized() * 100
+	move_and_collide(velocity * delta)
 
 
 func _movement(delta):
@@ -64,3 +73,8 @@ func _on_phase__2_timeout() -> void:
 func _on_fire_rate_timeout() -> void:
 	if not_front == false:
 		shoot()
+
+
+func _on_player_hit_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		ui._health -= 100

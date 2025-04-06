@@ -18,5 +18,5 @@ func _physics_process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("boss"):
-		ui.boss_health -=30
+		boss.boss_health -=30
 		queue_free()

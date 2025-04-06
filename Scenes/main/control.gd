@@ -28,14 +28,6 @@ var shoot_bar :float= 0:
 			shoot()
 			shoot_bar =0
 
-var boss_health :float= 100:
-	set(value):
-		boss_health = value
-		$boss_health.value = value
-		if boss_health <=0:
-			print("boss_death")
-
-
 
 func shoot():
 	var bullet =bullet_node.instantiate()
@@ -45,5 +37,8 @@ func shoot():
 
 
 func _on_esc_pressed() -> void:
-	print("dowoooooooooooooooooooooooooooooooooooo")
-	get_tree().change_scene_to_file("res://Scenes/UI/pause_ui.tscn")
+	get_tree().paused = true
+	
+
+func _on_play_pressed() -> void:
+	get_tree().paused = false
