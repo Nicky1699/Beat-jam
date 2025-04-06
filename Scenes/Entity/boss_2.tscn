@@ -27,7 +27,7 @@ scale = Vector2(4.11, 0.85)
 target_position = Vector2(0, 20)
 
 [node name="phase__2" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 18.0
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
