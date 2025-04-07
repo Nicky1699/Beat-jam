@@ -8,3 +8,11 @@ extends Node2D
 func _physics_process(delta: float) -> void:
 	animation_player.play("idle")
 	
+
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main/main_page.tscn")
+
+
+func _on_bonus_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Levels/bonus.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bkp13r3nn3rnt"]
+[gd_scene load_steps=14 format=4 uid="uid://bkp13r3nn3rnt"]
 
 [ext_resource type="Texture2D" uid="uid://dnxl3rh4hkoc5" path="res://Assets/tilset/tiles.png" id="1_7d313"]
 [ext_resource type="Script" uid="uid://d0t3t2sgcvk5r" path="res://Scenes/UI/win_ui.gd" id="1_27bjr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rtfuowcitca0" path="res://Scenes/Entity/timer_tunnner.tscn" id="5_isw6g"]
 [ext_resource type="AudioStream" uid="uid://c8bh7bkfagyt6" path="res://music/Win.mp3" id="6_27bjr"]
 [ext_resource type="Texture2D" uid="uid://b7e1xr3vi08gh" path="res://Assets/ui/menu.png" id="7_isw6g"]
+[ext_resource type="Texture2D" uid="uid://wduekvtpghbs" path="res://Assets/ui/bonus.png" id="8_qcorn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1xht"]
 texture = ExtResource("1_7d313")
@@ -136,12 +137,22 @@ position = Vector2(75, -12)
 stream = ExtResource("6_27bjr")
 autoplay = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 481.0
-offset_top = 454.0
-offset_right = 536.0
-offset_bottom = 494.0
+[node name="menu" type="TextureButton" parent="."]
+offset_left = 381.0
+offset_top = 472.0
+offset_right = 436.0
+offset_bottom = 512.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("7_isw6g")
 
+[node name="bonus" type="TextureButton" parent="."]
+offset_left = 577.0
+offset_top = 468.0
+offset_right = 655.0
+offset_bottom = 508.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("8_qcorn")
+
 [connection signal="timeout" from="timer_tunnner/Timer" to="timer_tunnner" method="_on_timer_timeout"]
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="bonus" to="." method="_on_bonus_pressed"]

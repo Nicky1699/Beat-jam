@@ -64,6 +64,7 @@ offset_top = 240.0
 offset_right = 300.0
 offset_bottom = 632.0
 script = ExtResource("4_yxf76")
+can_Shoot = true
 
 [node name="player_health" type="TextureProgressBar" parent="UI"]
 layout_mode = 0

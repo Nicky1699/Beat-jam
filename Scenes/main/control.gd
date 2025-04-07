@@ -11,6 +11,7 @@ extends Control
 @onready var exit: TextureButton = $esc/pause_ui/exit
 @onready var exit_text: RichTextLabel = $esc/pause_ui/exit_text
 
+@export var can_Shoot : bool
 
 
 var _health :float= 100:
@@ -24,7 +25,7 @@ var shoot_bar :float= 0:
 	set(value):
 		shoot_bar = value
 		$shoot_bar.value = value
-		if shoot_bar ==100:
+		if shoot_bar ==100 and can_Shoot == true:
 			shoot()
 			shoot_bar =0
 
