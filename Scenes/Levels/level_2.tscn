@@ -153,6 +153,8 @@ script = ExtResource("18_5buja")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="pressed" from="UI/esc" to="UI" method="_on_esc_pressed"]
 [connection signal="pressed" from="UI/play" to="UI" method="_on_play_pressed"]
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]

@@ -8,9 +8,14 @@ var can_slash :  bool
 @onready var bullet: Timer = $bullet
 
 
+@onready var _bullet =get_tree().get_first_node_in_group("bullet")
+@onready var _slash =get_tree().get_first_node_in_group("slash")
+
 @onready var shoot_points: Marker2D = $shoot_points
 @onready var slash_node =  preload("res://Scenes/Entity/slash.tscn")
 @onready var bullet_node = preload("res://Scenes/Projectiles/boss_bullet.tscn")
+
+var time_up : bool = false
 
 func shoot():
 	var bullet = bullet_node.instantiate()
@@ -34,9 +39,20 @@ func _on_bullet_timeout() -> void:
 			shoot()
 		1:
 			slash_shoot()
-	
-	
+
 
 
 func _on_game_over_timeout() -> void:
 	print("game over")
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("slash") or area.is_in_group("bullet"):
+		#area.dmg =100
+		print(area.dmg)
+	if time_up == true:
+		area.speed = 350
+
+
+func _on_bullet_speed_timeout() -> void:
+	time_up = true
