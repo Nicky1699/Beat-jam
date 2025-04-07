@@ -16,6 +16,7 @@ var can_slash :  bool
 @onready var bullet_node = preload("res://Scenes/Projectiles/boss_bullet.tscn")
 
 var time_up : bool = false
+var timer_108 = false
 
 func shoot():
 	var bullet = bullet_node.instantiate()
@@ -43,7 +44,7 @@ func _on_bullet_timeout() -> void:
 
 
 func _on_game_over_timeout() -> void:
-	print("game over")
+	get_tree().change_scene_to_file("res://Scenes/Levels/bonus.tscn")
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -51,8 +52,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		#area.dmg =100
 		print(area.dmg)
 	if time_up == true:
-		area.speed = 350
+		area.speed = 400
+	if timer_108 == true:
+		area.speed = 450
 
 
 func _on_bullet_speed_timeout() -> void:
 	time_up = true
+
+
+func _on_timer_timeout() -> void:
+	timer_108 = true

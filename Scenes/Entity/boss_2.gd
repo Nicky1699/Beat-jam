@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var ui  = get_tree().get_first_node_in_group("UI")
 
 
+@onready var animation_player: AnimationPlayer =$CanvasLayer/AnimationPlayer
 
 @onready var down: RayCast2D = $down
 @onready var up: RayCast2D = $up
@@ -15,8 +16,10 @@ var boss_health :float= 100:
 		boss_health = value
 		$"../UI/boss_health".value = value
 		if boss_health <=0:
-			get_tree().change_scene_to_file("res://Scenes/Levels/level_3.tscn" )
+			animation_player.play("fade_out")
 
+func level_change():
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_3.tscn" )
 
 var can_up : bool =  true
 var can_down : bool =  true

@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var down: RayCast2D = $down
 @onready var up: RayCast2D = $up
+@onready var animation_player: AnimationPlayer = $fade_out/AnimationPlayer
 
 
 

@@ -1,6 +1,10 @@
 extends Control
 
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
+@onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
 
+
+	
 
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main/main.tscn")

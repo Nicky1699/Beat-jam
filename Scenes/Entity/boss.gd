@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
 
 
 var boss_health :float= 100:
@@ -7,12 +8,13 @@ var boss_health :float= 100:
 		boss_health = value
 		$"../level_1/UI/boss_health".value = value
 		if boss_health <=0:
-			get_tree().change_scene_to_file("res://Scenes/Levels/level_2.tscn" )
+			can_shoot = false
+			animation_player.play("fade_out")
 
 
 
 
-
+var can_shoot =  true
 var can_up : bool =  true
 var can_down : bool =  true
 
@@ -23,6 +25,9 @@ var can_down : bool =  true
 
 var is_move = false
 
+
+func to_level_2():
+	get_tree().change_scene_to_file("res://Scenes/Levels/level_2.tscn" )
 
 func _physics_process(delta: float) -> void:
 	#if is_move == true:
@@ -57,5 +62,6 @@ func shoot():
 
 
 func _on_timer_timeout() -> void:
-	shoot()
+	if can_shoot==true:
+		shoot()
 	

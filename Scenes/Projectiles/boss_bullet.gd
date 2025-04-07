@@ -4,7 +4,7 @@ extends Area2D
 
 var direction
 var speed = 250
-var dmg = 10
+var dmg = 30
 
 
 @onready var health  =get_tree().get_first_node_in_group("UI")

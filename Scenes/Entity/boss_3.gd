@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var down: RayCast2D = $up
 @onready var up: RayCast2D =$down
+@onready var animation_player: AnimationPlayer =$CanvasLayer/AnimationPlayer
 
 
 var boss_health :float= 100:
@@ -15,10 +16,11 @@ var boss_health :float= 100:
 		boss_health = value
 		$"../UI/boss_health".value = value
 		if boss_health <=0:
-			get_tree().change_scene_to_file("res://Scenes/UI/win_ui.tscn" )
+			can_shoot=false
+			animation_player.play("fasde_in")
 
 
-
+var can_shoot = true
 var can_up : bool =  true
 var can_down : bool =  true
 
@@ -26,7 +28,8 @@ var not_front : bool
 
 var is_move = false
 
-
+func level_change():
+			get_tree().change_scene_to_file("res://Scenes/UI/win_ui.tscn" )
 func _physics_process(delta: float) -> void:
 	_movement(delta)
 
@@ -61,4 +64,5 @@ func shoot():
 
 
 func _on_fire_rate_timeout() -> void:
-	shoot()
+	if can_shoot == true:
+		shoot()

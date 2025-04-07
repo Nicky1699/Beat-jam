@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://odw6ikm7iayk"]
+[gd_scene load_steps=8 format=3 uid="uid://odw6ikm7iayk"]
 
 [ext_resource type="Script" uid="uid://tlwrtnreof5b" path="res://Scenes/Entity/boss_2.gd" id="1_m13dl"]
 [ext_resource type="Texture2D" uid="uid://rbma4k0p1lmc" path="res://Assets/boss/boss_2.png" id="2_jntso"]
@@ -7,6 +7,67 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jntso"]
 radius = 16.7631
+
+[sub_resource type="Animation" id="Animation_jntso"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.90354),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"level_change"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_66ydo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qetn2"]
+_data = {
+&"RESET": SubResource("Animation_66ydo"),
+&"fade_out": SubResource("Animation_jntso")
+}
 
 [node name="boss_2" type="CharacterBody2D" groups=["boss"]]
 script = ExtResource("1_m13dl")
@@ -39,6 +100,21 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hit"]
 shape = SubResource("CircleShape2D_jntso")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -1111.0
+offset_top = -656.0
+offset_right = 1151.0
+offset_bottom = 696.0
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_qetn2")
+}
 
 [connection signal="timeout" from="phase__2" to="." method="_on_phase__2_timeout"]
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]

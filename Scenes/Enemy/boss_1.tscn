@@ -27,4 +27,15 @@ scale = Vector2(25, 1.525)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="fade_out" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="fade_out"]
+offset_left = -1561.0
+offset_top = -916.0
+offset_right = 1601.0
+offset_bottom = 956.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fade_out"]
+root_node = NodePath("../..")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

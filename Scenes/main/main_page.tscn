@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bgdo5krq2a2to"]
+[gd_scene load_steps=10 format=4 uid="uid://bgdo5krq2a2to"]
 
 [ext_resource type="Script" uid="uid://5ctyrx1lg48c" path="res://Scenes/main/main_page.gd" id="1_60tes"]
 [ext_resource type="Texture2D" uid="uid://dnxl3rh4hkoc5" path="res://Assets/tilset/tiles.png" id="2_17x1w"]
 [ext_resource type="Texture2D" uid="uid://ey0bk2gtodrg" path="res://Assets/player/Main_page.png" id="3_d4vcb"]
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="4_h2jqt"]
 [ext_resource type="Texture2D" uid="uid://bar733ipw34bt" path="res://Assets/ui/empty.png" id="5_r6ysu"]
-[ext_resource type="Texture2D" uid="uid://bs3b3vq0ymrbo" path="res://Assets/ui/exi_button.png" id="6_d4vcb"]
 [ext_resource type="Texture2D" uid="uid://bdr51y0r2dd4v" path="res://Assets/ui/credits.png" id="7_h2jqt"]
 [ext_resource type="AudioStream" uid="uid://k2glpq6sp0ln" path="res://music/UI theme.mp3" id="8_h2jqt"]
 
@@ -76,36 +75,25 @@ scroll_active = false
 [node name="start_button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 693.0
-offset_top = 137.0
+offset_top = 162.0
 offset_right = 757.0
-offset_bottom = 169.0
+offset_bottom = 194.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("5_r6ysu")
 
 [node name="credits" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 701.0
-offset_top = 368.0
-offset_right = 765.0
-offset_bottom = 400.0
+offset_left = 691.0
+offset_top = 266.0
+offset_right = 755.0
+offset_bottom = 298.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("7_h2jqt")
-
-[node name="exit" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 693.0
-offset_top = 250.0
-offset_right = 757.0
-offset_bottom = 282.0
-scale = Vector2(4, 4)
-texture_normal = ExtResource("6_d4vcb")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_h2jqt")
 autoplay = true
 
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
