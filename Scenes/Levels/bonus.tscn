@@ -94,18 +94,19 @@ texture = ExtResource("10_xw10k")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="level_1/UI"]
 layout_mode = 0
-offset_left = 802.0
-offset_top = 52.0
-offset_right = 1012.0
-offset_bottom = 79.0
-scale = Vector2(1.63, 1.63)
+offset_left = 797.0
+offset_top = 65.0
+offset_right = 1007.0
+offset_bottom = 92.0
+scale = Vector2(1.8, 1.8)
 theme_override_fonts/normal_font = ExtResource("11_u5iip")
 bbcode_enabled = true
 text = "
-Caution : One hit death
+Survive for 128 seconds
 
 "
 scroll_active = false
+tab_size = 8
 
 [node name="timer_tunnner" parent="level_1/UI" instance=ExtResource("12_08xqw")]
 position = Vector2(50, 199)

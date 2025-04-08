@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://c4ctemtp2b1i5"]
+[gd_scene load_steps=6 format=4 uid="uid://c4ctemtp2b1i5"]
 
 [ext_resource type="Texture2D" uid="uid://dnxl3rh4hkoc5" path="res://Assets/tilset/tiles.png" id="1_psjbv"]
 [ext_resource type="FontFile" uid="uid://dalk1d1r8dnpb" path="res://Assets/ui/Stacked pixel.ttf" id="2_0lxwm"]
+[ext_resource type="AudioStream" uid="uid://c8bh7bkfagyt6" path="res://music/Win.mp3" id="3_0lxwm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0pyh2"]
 texture = ExtResource("1_psjbv")
@@ -60,3 +61,7 @@ text = "[shake rate=5 level=10]
 your are the Beat king![/shake] 
 [/shake] 
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0lxwm")
+autoplay = true
