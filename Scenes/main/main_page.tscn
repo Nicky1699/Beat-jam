@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bgdo5krq2a2to"]
+[gd_scene load_steps=11 format=4 uid="uid://bgdo5krq2a2to"]
 
 [ext_resource type="Script" uid="uid://5ctyrx1lg48c" path="res://Scenes/main/main_page.gd" id="1_60tes"]
 [ext_resource type="Texture2D" uid="uid://dnxl3rh4hkoc5" path="res://Assets/tilset/tiles.png" id="2_17x1w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bar733ipw34bt" path="res://Assets/ui/empty.png" id="5_r6ysu"]
 [ext_resource type="Texture2D" uid="uid://bdr51y0r2dd4v" path="res://Assets/ui/credits.png" id="7_h2jqt"]
 [ext_resource type="AudioStream" uid="uid://k2glpq6sp0ln" path="res://music/UI theme.mp3" id="8_h2jqt"]
+[ext_resource type="Texture2D" uid="uid://bs3b3vq0ymrbo" path="res://Assets/ui/exi_button.png" id="8_r6ysu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lox2a"]
 texture = ExtResource("2_17x1w")
@@ -94,5 +95,15 @@ texture_normal = ExtResource("7_h2jqt")
 stream = ExtResource("8_h2jqt")
 autoplay = true
 
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 390.0
+offset_right = 776.0
+offset_bottom = 430.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("8_r6ysu")
+
 [connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
