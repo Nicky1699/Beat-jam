@@ -44,12 +44,12 @@ func _on_bullet_timeout() -> void:
 
 
 func _on_game_over_timeout() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Levels/bonus.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/bonus_win.tscn")
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("slash") or area.is_in_group("bullet"):
-		area.dmg =100
+		area.dmg =1200
 		print(area.dmg)
 	if time_up == true:
 		area.speed = 400

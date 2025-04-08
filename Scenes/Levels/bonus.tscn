@@ -65,6 +65,7 @@ texture = ExtResource("7_qooba")
 flip_h = true
 
 [node name="shoot_bar" type="TextureProgressBar" parent="level_1/UI"]
+visible = false
 layout_mode = 0
 offset_left = 40.0
 offset_top = 101.0
@@ -74,6 +75,7 @@ texture_under = ExtResource("8_dlsib")
 texture_progress = ExtResource("9_c0xrf")
 
 [node name="boss_health" type="TextureProgressBar" parent="level_1/UI"]
+visible = false
 layout_mode = 0
 offset_left = 801.98
 offset_top = 60.0
@@ -85,21 +87,22 @@ texture_under = ExtResource("5_qh7jm")
 texture_progress = ExtResource("6_j0elo")
 
 [node name="boss_emot_1" type="Sprite2D" parent="level_1/UI"]
+visible = false
 position = Vector2(1081.19, 61.19)
 scale = Vector2(2.4, 2.464)
 texture = ExtResource("10_xw10k")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="level_1/UI"]
 layout_mode = 0
-offset_left = 804.0
-offset_top = 16.0
-offset_right = 1014.0
-offset_bottom = 43.0
+offset_left = 802.0
+offset_top = 52.0
+offset_right = 1012.0
+offset_bottom = 79.0
 scale = Vector2(1.63, 1.63)
 theme_override_fonts/normal_font = ExtResource("11_u5iip")
 bbcode_enabled = true
 text = "
-[wave amp=30 freq=2]Mr _Someone
+Caution : One hit death
 
 "
 scroll_active = false
